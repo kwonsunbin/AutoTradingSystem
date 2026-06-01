@@ -52,6 +52,11 @@ public class MockDriver implements StockBrokerDriver {
         return prices.poll();
     }
 
+    @Override
+    public int getPrice(String stockCode, int min) {
+        throw new IllegalArgumentException();
+    }
+
     public void addPrice(int price) {
         prices.add(price);
     }

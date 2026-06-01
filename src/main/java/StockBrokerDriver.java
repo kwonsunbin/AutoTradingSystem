@@ -6,4 +6,6 @@ public interface StockBrokerDriver {
     void sell(String stockCode, int price, int count);
 
     int getPrice(String stockCode);
+
+    int getPrice(String stockCode, int min) throws InterruptedException;
 }
