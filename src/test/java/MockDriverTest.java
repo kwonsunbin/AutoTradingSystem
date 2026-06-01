@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MockDriverTest {
@@ -43,6 +45,14 @@ class MockDriverTest {
         mock.addPrice(2000);
         assertEquals(1000, mock.getPrice("005930"));
         assertEquals(2000, mock.getPrice("005930"));
-        assertEquals(2, mock.getPriceCallCount());
+    }
+
+    @Test
+    void getPrice_returns_getPriceCallCount() {
+        MockDriver mock = new MockDriver();
+        mock.addPrice(1000);
+        mock.addPrice(2000);
+
+        assertThat(mock.getPriceCallCount()).isEqualTo(2);
     }
 }
