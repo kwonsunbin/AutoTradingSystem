@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MockDriverTest {
@@ -32,6 +34,7 @@ class MockDriverTest {
         MockDriver mock = new MockDriver();
         mock.sell("005930", 9000, 5);
         assertEquals(1, mock.getSellCallCount());
+        assertEquals("005930", mock.getLastSellStockCode());
         assertEquals(9000, mock.getLastSellPrice());
         assertEquals(5, mock.getLastSellCount());
     }
@@ -44,5 +47,12 @@ class MockDriverTest {
         assertEquals(1000, mock.getPrice("005930"));
         assertEquals(2000, mock.getPrice("005930"));
         assertEquals(2, mock.getPriceCallCount());
+    }
+
+    @Test
+    void getPrice_returns_zero_when_no_price_exists() {
+        MockDriver mock = new MockDriver();
+
+        assertThat(mock.getPrice("005930")).isEqualTo(0);
     }
 }

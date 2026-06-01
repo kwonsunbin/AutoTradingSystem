@@ -6,7 +6,11 @@ class AutoTradingSystemTest {
     @Test
     void buyNiceTiming_buys_max_quantity_when_3_consecutive_rises() {
         MockDriver mock = new MockDriver();
-        mock.addPrice(1000); mock.addPrice(2000); mock.addPrice(3000); mock.addPrice(4000);
+        mock.addPrice(1000);
+        mock.addPrice(2000);
+        mock.addPrice(3000);
+        mock.addPrice(4000);
+
         AutoTradingSystem ats = new AutoTradingSystem();
         ats.selectStockBroker(mock);
 
@@ -21,7 +25,11 @@ class AutoTradingSystemTest {
     @Test
     void buyNiceTiming_does_not_buy_when_not_uptrend() {
         MockDriver mock = new MockDriver();
-        mock.addPrice(1000); mock.addPrice(2000); mock.addPrice(1500); mock.addPrice(3000);
+        mock.addPrice(1000);
+        mock.addPrice(2000);
+        mock.addPrice(1500);
+        mock.addPrice(3000);
+
         AutoTradingSystem ats = new AutoTradingSystem();
         ats.selectStockBroker(mock);
 
@@ -33,7 +41,11 @@ class AutoTradingSystemTest {
     @Test
     void sellNiceTiming_sells_all_when_3_consecutive_drops() {
         MockDriver mock = new MockDriver();
-        mock.addPrice(4000); mock.addPrice(3000); mock.addPrice(2000); mock.addPrice(1000);
+        mock.addPrice(4000);
+        mock.addPrice(3000);
+        mock.addPrice(2000);
+        mock.addPrice(1000);
+
         AutoTradingSystem ats = new AutoTradingSystem();
         ats.selectStockBroker(mock);
 
@@ -47,7 +59,11 @@ class AutoTradingSystemTest {
     @Test
     void sellNiceTiming_does_not_sell_when_not_downtrend() {
         MockDriver mock = new MockDriver();
-        mock.addPrice(4000); mock.addPrice(3000); mock.addPrice(3500); mock.addPrice(1000);
+        mock.addPrice(4000);
+        mock.addPrice(3000);
+        mock.addPrice(3500);
+        mock.addPrice(1000);
+
         AutoTradingSystem ats = new AutoTradingSystem();
         ats.selectStockBroker(mock);
 
