@@ -1,4 +1,7 @@
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MockDriverTest {
@@ -39,10 +42,10 @@ class MockDriverTest {
     @Test
     void getPrice_returns_scripted_prices_in_FIFO_order() {
         MockDriver mock = new MockDriver();
-        mock.addPrice(1000);
-        mock.addPrice(2000);
+        mock.addPrice("005930",1000);
+        mock.addPrice("005940", 2000);
         assertEquals(1000, mock.getPrice("005930"));
-        assertEquals(2000, mock.getPrice("005930"));
+        assertEquals(2000, mock.getPrice("005940"));
         assertEquals(2, mock.getPriceCallCount());
     }
 }

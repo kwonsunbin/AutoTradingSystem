@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class KiwerAPI {
+public class KiwerAPI{
     public void login( String ID, String Password) {
         System.out.println(ID + "님 로그인 성공");
     }
