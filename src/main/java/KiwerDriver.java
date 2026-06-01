@@ -3,22 +3,6 @@ import java.util.Queue;
 
 public class KiwerDriver implements StockBrokerDriver{
 
-    private boolean loginCalled;
-    private String loginId;
-
-    private int buyCallCount;
-    private String lastBuyStockCode;
-    private int lastBuyPrice;
-    private int lastBuyCount;
-
-    private int sellCallCount;
-    private String lastSellStockCode;
-    private int lastSellPrice;
-    private int lastSellCount;
-
-    private int priceCallCount;
-    private final Queue<Integer> prices = new LinkedList<>();
-
     KiwerAPI driver ;
     KiwerDriver(){
         driver = new KiwerAPI();
