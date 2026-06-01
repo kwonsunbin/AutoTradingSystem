@@ -1,5 +1,9 @@
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 
 class MockDriverTest {
 
@@ -36,11 +40,18 @@ class MockDriverTest {
         assertEquals(5, mock.getLastSellCount());
     }
 
+    @Mock
+    MockDriver mock;
     @Test
     void getPrice_returns_scripted_prices_in_FIFO_order() {
-        MockDriver mock = new MockDriver();
+
+//        MockDriver mock;
+
+
+        when(mock.getPrice(anyString())).thenReturn(1000).thenReturn(2000);
         mock.addPrice(1000);
         mock.addPrice(2000);
+//        when(mock.addPrice(anyInt())).thenReturn("asdf");
         assertEquals(1000, mock.getPrice("005930"));
         assertEquals(2000, mock.getPrice("005930"));
         assertEquals(2, mock.getPriceCallCount());
