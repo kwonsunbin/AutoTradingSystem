@@ -34,6 +34,7 @@ class MockDriverTest {
         MockDriver mock = new MockDriver();
         mock.sell("005930", 9000, 5);
         assertEquals(1, mock.getSellCallCount());
+        assertEquals("005930", mock.getLastSellStockCode());
         assertEquals(9000, mock.getLastSellPrice());
         assertEquals(5, mock.getLastSellCount());
     }
@@ -45,16 +46,7 @@ class MockDriverTest {
         mock.addPrice(2000);
         assertEquals(1000, mock.getPrice("005930"));
         assertEquals(2000, mock.getPrice("005930"));
-    }
-
-    @Test
-    void getPrice_returns_getPriceCallCount() {
-        MockDriver mock = new MockDriver();
-        mock.addPrice(1000);
-        mock.addPrice(2000);
-        mock.getPrice("005930");
-        mock.getPrice("005930");
-        assertThat(mock.getPriceCallCount()).isEqualTo(2);
+        assertEquals(2, mock.getPriceCallCount());
     }
 
     @Test
