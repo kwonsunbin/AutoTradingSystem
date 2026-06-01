@@ -52,7 +52,15 @@ class MockDriverTest {
         MockDriver mock = new MockDriver();
         mock.addPrice(1000);
         mock.addPrice(2000);
-
+        mock.getPrice("005930");
+        mock.getPrice("005930");
         assertThat(mock.getPriceCallCount()).isEqualTo(2);
+    }
+
+    @Test
+    void getPrice_returns_zero_when_no_price_exists() {
+        MockDriver mock = new MockDriver();
+
+        assertThat(mock.getPrice("005930")).isEqualTo(0);
     }
 }
